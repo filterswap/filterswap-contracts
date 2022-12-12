@@ -231,4 +231,12 @@ contract FilterManager {
     function setVerificationRequestDeadline(uint _verificationRequestDeadline) external onlyAdmin {
         verificationRequestDeadline = _verificationRequestDeadline;
     }
+
+    // **** MISCELLANEOUS ****
+
+    function extendLiquidityLock(address _holderAddress, address _pairAddress, uint _liquidityLockTime) external {
+        require(msg.sender == _holderAddress, "FilterManager: NOT_LIQUIDITY_HOLDER");
+        
+        setLiquidityUnlockTime(_holderAddress, _pairAddress, liquidityUnlockTimes[_holderAddress][_pairAddress] + _liquidityLockTime);
+    }
 }
