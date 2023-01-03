@@ -8,3 +8,5 @@ FilterDeployer: <b>0xA1F840b3248Ba03F2520E8899196895b44d682Db</b><br>
 FilterVerifier: <b>0x8401Be7743b5599Fe75061B67Ce879da0156f195</b><br>
 FilterTreasury: <b>0xDE024Cd5B833DeE2019219FeF50e2058245fB093</b><br>
 SieveToken: <b>0x80Afcd62f4a29271fF19ec99D516D2953181e1bA</b><br>
+
+(currently outdated, will be updated soon)
