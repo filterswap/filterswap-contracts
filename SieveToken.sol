@@ -1,4 +1,4 @@
-pragma solidity ^0.8; 
+pragma solidity ^0.8;
 
 contract SieveToken {
     string public name = "Sieve Token";
