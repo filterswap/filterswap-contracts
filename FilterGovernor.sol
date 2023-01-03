@@ -1,4 +1,4 @@
-pragma solidity ^0.8;
+ pragma solidity ^0.8;
 
 interface IFilterManager {
     function governanceToken() external view returns (address);
