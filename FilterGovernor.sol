@@ -144,7 +144,7 @@ contract FilterGovernor {
         emit newGovernableProposal(governableTransactions.length - 1, _data);
     }
 
-    function depositGovernanceTokens() private {
+    function depositGovernanceTokens() public {
         address governanceToken = filterManager.governanceToken();
         uint governanceTokenBalance = IERC20(governanceToken).balanceOf(msg.sender);
         TransferHelper.safeTransferFrom(governanceToken, msg.sender, address(this), governanceTokenBalance);
@@ -165,6 +165,7 @@ contract FilterGovernor {
     function acceptProposal(uint _proposalID) external {
         depositGovernanceTokens();
 
+        require(!isGovernableConfirmed[_proposalID][msg.sender], "FilterGovernor: ALREADY_VOTED");
         require(_proposalID < governableTransactions.length, "FilterGovernor: PROPOSAL_DOESNT_EXIST");
         require(!isGovernableConfirmed[_proposalID][msg.sender], "FilterGovernor: PROPOSAL_ALREADY_CONFIRMED");
         require(!governableTransactions[_proposalID].executed, "FilterGovernor: PROPOSAL_ALREADY_EXECUTED");
@@ -183,6 +184,7 @@ contract FilterGovernor {
     function rejectProposal(uint _proposalID) external {
         depositGovernanceTokens();
 
+        require(!isGovernableConfirmed[_proposalID][msg.sender], "FilterGovernor: ALREADY_VOTED");
         require(_proposalID < governableTransactions.length, "FilterGovernor: PROPOSAL_DOESNT_EXIST");
         require(!isGovernableConfirmed[_proposalID][msg.sender], "FilterGovernor: PROPOSAL_ALREADY_CONFIRMED");
         require(!governableTransactions[_proposalID].executed, "FilterGovernor: PROPOSAL_ALREADY_EXECUTED");
