@@ -1,3 +1,5 @@
+//FilterSwap (V1): filterswap.exchange
+
 pragma solidity ^0.8;
 
 interface IFilterManager {
